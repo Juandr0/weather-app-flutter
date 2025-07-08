@@ -1,16 +1,37 @@
-# weather_app_60min
+# Weather App 90min challenge
 
-A new Flutter project.
+## Beskrivning
 
-## Getting Started
+En enkel väderapp byggd med Flutter med fokus på Clean Architecture, state management med Cubit, samt API-integration med möjlighet att uppdatera data via en refresh-knapp.
 
-This project is a starting point for a Flutter application.
+## Funktioner
 
-A few resources to get you started if this is your first Flutter project:
+- Sök väder för olika städer
+- Visa aktuell plats, temperatur, beskrivning och ikon
+- Uppdatera väderdata med refresh-knapp
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Arkitektur
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Clean Architecture
+
+## State Management
+
+- Cubit från flutter_bloc för att hantera state och logik
+
+## Användning
+
+1. Klona repot
+2. Lägg till din API-nyckel i [`lib/core/utils/api_key.dart`](lib/core/utils/api_key.dart) från [weatherapi.com](https://www.weatherapi.com)
+
+
+3. Kör appen
+
+## Paket
+
+- flutter_bloc
+- dio
+- equatable
+
+---
+
+Byggd som en övning i Clean Architecture och Cubit.
