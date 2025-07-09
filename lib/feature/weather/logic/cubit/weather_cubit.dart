@@ -1,16 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_60min/feature/weather/domain/repositories/weather_repository.dart';
+import 'package:weather_app_60min/feature/weather/domain/usecases/get_weather_use_case.dart';
 import 'package:weather_app_60min/feature/weather/logic/cubit/weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  final WeatherRepository repository;
+  final GetWeatherUseCase _getWeatherUseCase;
 
-  WeatherCubit(this.repository) : super(WeatherInitial());
+  WeatherCubit(this._getWeatherUseCase) : super(WeatherInitial());
 
   Future<void> fetchWeather(String city) async {
     emit(WeatherLoading());
     try {
-      final weather = await repository.getWeather(city);
+      final weather = await _getWeatherUseCase.call(city);
       emit(WeatherLoaded(weather));
     } catch (e) {
       emit(WeatherError(e.toString()));

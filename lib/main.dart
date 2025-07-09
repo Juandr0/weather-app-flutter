@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_60min/feature/weather/data/repositories/weather_repository_impl.dart';
 import 'package:weather_app_60min/feature/weather/data/services/api_service.dart';
+import 'package:weather_app_60min/feature/weather/domain/usecases/get_weather_use_case.dart';
 import 'package:weather_app_60min/feature/weather/logic/cubit/weather_cubit.dart';
 
 import 'feature/weather/presentation/pages/home_page.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final apiService = ApiService();
     final weatherRepository = WeatherRepositoryImpl(apiService: apiService);
+    final getWeatherUseCase = GetWeatherUseCase(weatherRepository);
 
     return MaterialApp(
       title: 'Flutter Demo',
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: BlocProvider(
-          create: (_) => WeatherCubit(weatherRepository),
+          create: (_) => WeatherCubit(getWeatherUseCase),
           child: const HomePage()),
     );
   }
